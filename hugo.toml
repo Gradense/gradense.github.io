@@ -1,0 +1,104 @@
+baseURL = "https://www.yourdomain.com/"
+languageCode = "en-us"
+title = "Your AI/ML Blog Name"
+theme = "PaperMod"
+
+# --- Core behavior ---
+paginate = 8
+enableRobotsTXT = true
+enableEmoji = false
+hasCJKLanguage = false
+
+[minify]
+  disableXML = true
+
+[taxonomies]
+  tag = "tags"
+  series = "series"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]  # JSON output powers the built-in search page
+
+# --- Markdown / Goldmark rendering ---
+[markup]
+  [markup.highlight]
+    noClasses = false          # REQUIRED: lets PaperMod's bundled Chroma stylesheet apply
+    lineNos = true
+    lineNumbersInTable = true
+    tabWidth = 4
+    guessSyntax = true
+    codeFences = true
+  [markup.goldmark.renderer]
+    unsafe = true              # allows raw HTML passthrough, needed by some KaTeX/shortcode patterns
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+
+[params]
+  env = "production"
+  description = "Deep dives, tutorials, and notes on AI, Machine Learning, and Generative AI — written for practitioners."
+  keywords = ["AI", "Machine Learning", "GenAI", "LLM", "Deep Learning", "Python"]
+  author = "Your Name"
+  math = true                  # site-wide default; override per-post with `math: false` in front matter
+
+  # --- Reading experience ---
+  defaultTheme = "dark"        # dark-mode-first, per project requirements
+  disableThemeToggle = false   # still let visitors switch to light mode
+  ShowReadingTime = true
+  ShowWordCount = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true   # critical for a code-heavy blog
+  ShowRssButtonInSectionTermList = true
+  ShowAllPagesInArchive = true
+  ShowFullTextinRSS = true
+  UseHugoToc = true
+  TocOpen = false
+  comments = false             # no third-party comment widget = zero maintenance
+  hidemeta = false
+  ShowToc = true
+
+  # --- Homepage intro card (sits above the post list; NOT full profile mode) ---
+  [params.homeInfoParams]
+    Title = "Hi, I'm building in AI/ML 👋"
+    Content = "Notes, tutorials, and deep dives on machine learning, LLMs, and generative AI — with real code, not just theory."
+
+  [params.socialIcons]
+    # Uncomment and fill in the ones you use; each is rendered as an icon link.
+    # - name = "github"
+    #   url = "https://github.com/yourusername"
+    # - name = "linkedin"
+    #   url = "https://linkedin.com/in/yourusername"
+    # - name = "rss"
+    #   url = "index.xml"
+
+  [params.assets]
+    disableFingerprinting = false
+    # favicon = "/favicon.ico"
+    # favicon32x32 = "/favicon-32x32.png"
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    includeMatches = true
+    threshold = 0.4
+    minMatchCharLength = 2
+    keys = ["title", "permalink", "summary", "content"]
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 20
+  [[menu.main]]
+    identifier = "search"
+    name = "Search"
+    url = "/search/"
+    weight = 30
